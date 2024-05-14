@@ -1,0 +1,18 @@
+server:
+  shutdown: graceful
+  tomcat:
+    accesslog:
+      enabled: true
+      pattern: '%h %t %s %bb %Dms "%r"'
+      prefix: instaverse-server-access-log
+      directory: logs
+      max-days: 5
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/instaverse-db
+    username: instaverse
+    password: instaverse
+    driverClassName: org.postgresql.Driver
+info:
+  app:
+    name: instaverse-server
