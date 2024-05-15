@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface PostsRepository extends JpaRepository<PostEntity, String> {
+public interface PostsRepository extends JpaRepository<PostEntity, Long> {
 }

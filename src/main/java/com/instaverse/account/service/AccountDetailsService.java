@@ -17,17 +17,17 @@ public class AccountDetailsService {
 
     private final AccountDetailsRepository accountDetailsRepository;
 
-    public AccountDetailsEntity getAccountDetailsByAccountName(String accountName) {
-        return this.accountDetailsRepository.getAccountDetailsEntitiesByAccountName(accountName);
+    public AccountDetailsEntity getAccountDetails() {
+        return this.accountDetailsRepository.findAll().get(0);
     }
 
-    public AccountDetailsDTO updateAccountDetails(String accountName, String newAccountName, String newAccountDescription) {
-        AccountDetailsEntity accountDetails = this.accountDetailsRepository.getAccountDetailsEntitiesByAccountName(accountName);
-        if (Strings.isNotEmpty(accountName)) {
-            accountDetails.setAccountName(newAccountName);
+    public AccountDetailsDTO updateAccountDetails(AccountDetailsDTO newAccountDetails) {
+        AccountDetailsEntity accountDetails = this.getAccountDetails();
+        if (Strings.isNotEmpty(newAccountDetails.getAccountName())) {
+            accountDetails.setAccountName(newAccountDetails.getAccountName());
         }
-        if (Strings.isNotEmpty(newAccountDescription)) {
-            accountDetails.setDescription(newAccountDescription);
+        if (Strings.isNotEmpty(newAccountDetails.getDescription())) {
+            accountDetails.setDescription(newAccountDetails.getDescription());
         }
         AccountDetailsEntity accountDetailsEntity = this.accountDetailsRepository.save(accountDetails);
         return mapAccountDetailsEntityToDTO(accountDetailsEntity);

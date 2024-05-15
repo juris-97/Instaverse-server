@@ -7,6 +7,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AccountDetailsRepository extends JpaRepository<AccountDetailsEntity, String> {
 
-    AccountDetailsEntity getAccountDetailsEntitiesByAccountName(String accountName);
-
 }

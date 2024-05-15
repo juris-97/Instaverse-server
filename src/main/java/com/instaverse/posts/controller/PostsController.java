@@ -17,9 +17,8 @@ public class PostsController {
 
     private final PostsService postsService;
 
-    @PostMapping("/save/{accountName}")
-    public PostDto savePost(@PathVariable("accountName") String accountName,
-                            @RequestParam("file") MultipartFile file,
+    @PostMapping("/save")
+    public PostDto savePost(@RequestParam("file") MultipartFile file,
                             @RequestParam("filename") String fileName,
                             @RequestParam("altName") String altName) throws IOException {
         PostDto postDto = PostDto.builder()
@@ -27,7 +26,12 @@ public class PostsController {
                 .filename(fileName)
                 .altName(altName)
                 .build();
-        return this.postsService.savePost(postDto, accountName);
+        return this.postsService.savePost(postDto);
+    }
+
+    @DeleteMapping("/delete/{postId}")
+    public void deletePost(@PathVariable("postId") Long postId) {
+        this.postsService.deletePost(postId);
     }
 
     @GetMapping
