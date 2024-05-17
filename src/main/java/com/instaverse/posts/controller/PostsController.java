@@ -21,8 +21,8 @@ public class PostsController {
 
     @PostMapping("/save")
     public ResponseEntity<PostDto> savePost(@RequestParam("file") MultipartFile file,
-                                           @RequestParam("filename") String fileName,
-                                           @RequestParam("altName") String altName) throws IOException {
+                                            @RequestParam("filename") String fileName,
+                                            @RequestParam("altName") String altName) throws IOException {
         PostDto postDto = PostDto.builder()
                 .fileBytes(file.getBytes())
                 .filename(fileName)

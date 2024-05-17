@@ -9,7 +9,7 @@ server:
       max-days: 5
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/instaverse-db
+    url: jdbc:postgresql://postgresql:5432/instaverse
     username: instaverse
     password: instaverse
     driverClassName: org.postgresql.Driver
